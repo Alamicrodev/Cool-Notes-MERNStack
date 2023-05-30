@@ -22,6 +22,11 @@ const cors = require("cors")
 const xss = require("xss-clean")
 const rateLimiter = require("express-rate-limit")
 
+//Swagger
+const YAML = require("yamljs")
+const swaggerUI = require("swagger-ui-express")
+const swaggerDocument = YAML.load("./swaggerdoc.yaml")
+
 const server = express()
 
 server.set('trust proxy', 1)
@@ -37,13 +42,14 @@ server.use("/api/v1/notes", notesRoutes)
 server.use("/api/v1/auth", authRoutes)
 
 server.get("/api", (req,res) => {
-    res.status(200).send("the api is working!!")
+    res.status(200).send("<h1>NoteTheMood Api</h1><a href='/api/v1/docs'>Documentation</a>")
 })
 
 server.get("/", (req, res) => {
-    res.status(200).send("the server is working!!")
+    res.status(200).send("<h1>NoteTheMood Api</h1><a href='/api/v1/docs'>Documentation</a>")
 })
 
+server.use("/api/v1/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 server.use(errorHandlerMiddleware)
 server.use(notFoundMiddleware)

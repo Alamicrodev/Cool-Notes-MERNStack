@@ -1,0 +1,277 @@
+openapi: 3.0.0
+info:
+  title: NoteTheMood API
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://notethemood-backend.onrender.com/api/v1/
+  variables: {}
+paths:
+  /notes:
+    get:
+      tags:
+      - Auth-Not-Compulsory
+      summary: All Public Notes
+      operationId: AllPublicNotes
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /notes/profile/{user_id}:
+    parameters:
+      - in: path
+        name: user_id
+        schema:
+         type: string
+        required: true
+        description: The Id of the user whose profile is being viewed.
+    get:
+      tags:
+      - Auth-Not-Compulsory
+      summary: All Public Notes of One User
+      operationId: AllUserNotes
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /notes/note/{note_id}:
+    parameters:
+      - in: path
+        name: note_id
+        schema:
+         type: string
+        required: true
+        description: The Id of the note being viewed/updated/deleted.
+    get:
+      tags:
+      - Auth-Not-Compulsory
+      summary: Get Note
+      operationId: GetNote
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - Auth-Compulsory
+      summary: Update Note
+      operationId: UpdateNote
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateNoteRequest'
+              - example:
+                  title: updated note
+                  note: This will completely update the note data.
+                  visibility: private
+                  mood: calm
+            example:
+              title: updated note
+              note: This will completely update the note data.
+              visibility: private
+              mood: calm
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Auth-Compulsory
+      summary: Delete Note
+      operationId: DeleteNote
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /notes/note:
+    post:
+      tags:
+      - Auth-Compulsory
+      summary: Create Note
+      operationId: CreateNote
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateNoteRequest'
+              - example:
+                  title: harry potter
+                  note: I feet like harry potter today
+                  mood: cool
+                  visibility: public
+            example:
+              title: harry potter
+              note: I feet like harry potter today
+              mood: cool
+              visibility: public
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginUserRequest'
+              - example:
+                  email: testuser@live.com
+                  password: newtester
+            example:
+              email: testuser@live.com
+              password: newtester
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterUserRequest'
+              - example:
+                  email: randomuser@gmail.com
+                  password: '12345678'
+                  name: Random User
+            example:
+              email: randomuser@gmail.com
+              password: '12345678'
+              name: Random User
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    CreateNoteRequest:
+      title: CreateNoteRequest
+      required:
+      - title
+      - note
+      - visibility
+      - mood
+      type: object
+      properties:
+        title:
+          type: string
+        note: 
+          type: string
+        visibility:
+          type: string
+        mood: 
+          type: string
+      example:
+        title: harry potter
+        visibility: public
+    UpdateNoteRequest:
+      title: UpdateNoteRequest
+      required:
+      - title
+      - note
+      - visibility
+      - mood
+      type: object
+      properties:
+        title:
+          type: string
+        note:
+          type: string
+        visibility:
+          type: string
+        mood:
+          type: string
+      example:
+        title: updated note
+        note: This will completely update the note data.
+        visibility: private
+        mood: calm
+    LoginUserRequest:
+      title: LoginUserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: testuser@live.com
+        password: newtester
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - email
+      - password
+      - name
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        name:
+          type: string
+      example:
+        email: randomuser@gmail.com
+        password: '12345678'
+        name: Random User
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+  description: 'Register or login with an account and returns the bearer token.'
+- name: Auth-Not-Compulsory
+  description: 'Authentication is not compulsory for these requests.'
+- name: Auth-Compulsory
+  description: 'Authetication is compulsory for these requests.'
