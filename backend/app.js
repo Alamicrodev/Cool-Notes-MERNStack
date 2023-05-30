@@ -36,14 +36,18 @@ server.use(xss())
 server.use("/api/v1/notes", notesRoutes)
 server.use("/api/v1/auth", authRoutes)
 
+server.get("/api", (req,res) => {
+    res.status(200).send("the api is working!!")
+})
+
+server.get("/", (req, res) => {
+    res.status(200).send("the server is working!!")
+})
+
 
 server.use(errorHandlerMiddleware)
 server.use(notFoundMiddleware)
 
-server.get("/", (req, res) => {
-     res.status(200).send("the server is working!!")
-})
- 
 
  
 // starting the server 
