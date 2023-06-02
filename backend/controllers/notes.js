@@ -116,7 +116,7 @@ const getOneNote = asyncWrapper( async(req, res) => {
     }
 
     if (req.authenticated.status && req.authenticated.user.id == note.user) {
-        return res.status(StatusCodes.OK).json({status: "success", note: note, userName: req.authenticated.user.name, local: true})
+        return res.status(StatusCodes.OK).json({status: "success", note: note, local: true})
     }
     else {
         if (note.visibility == "private")
@@ -124,11 +124,7 @@ const getOneNote = asyncWrapper( async(req, res) => {
             throw new unauthenticatedError("You are not authorized to access this note.")
         }
         else {
-            const user = await User.findById(note.user)
-            if (!user) {
-                user = {name: "Anonymous"}
-            }
-            return res.status(StatusCodes.OK).json({status: "success", note: note, userName: user.name,  local: false})
+            return res.status(StatusCodes.OK).json({status: "success", note: note,  local: false})
         }
     }
 })

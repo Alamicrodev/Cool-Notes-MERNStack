@@ -10,6 +10,7 @@ const connectDB = require("./db/connectDB.js")
 // import routes 
 const notesRoutes = require("./routes/notes.js")
 const authRoutes = require("./routes/auth.js") 
+const userRoutes = require("./routes/user.js")
 
 // importmiddleware
 const errorHandlerMiddleware = require("./middleware/errorhandler.js")
@@ -39,6 +40,7 @@ server.use(xss())
 
 
 server.use("/api/v1/notes", notesRoutes)
+server.use("/api/v1/users", userRoutes)
 server.use("/api/v1/auth", authRoutes)
 
 server.get("/api", (req,res) => {

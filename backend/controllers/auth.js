@@ -29,9 +29,7 @@ const login = asyncWrapper(async (req,res) => {
         throw new unauthenticatedError(`Cannot find a user with email ${email}.`)
     }
     
-    console.log(password)
     const isMatch = await user.comparePasswords(password)
-    console.log(isMatch)
     
     if (!isMatch) {
         throw new unauthenticatedError(`Your email or password is incorrect.`)
