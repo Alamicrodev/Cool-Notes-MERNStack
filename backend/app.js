@@ -84,7 +84,7 @@ const dbUrl = process.env.DB_URL
 const start = async () => { 
     try {
         await connectDB(dbUrl) 
-        server.listen(port, () => {
+        server.listen(port, "0.0.0.0", () => {
             console.log(`server live on port ${port}`)
         })
     }
