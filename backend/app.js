@@ -51,9 +51,11 @@ server.get("/api", (req,res) => {
     res.status(200).send("<h1>NoteTheMood Api</h1><a href='/api/v1/docs'>Documentation</a>")
 })
 
-server.get("/", (req, res) => {
-    res.status(200).send("<h1>NoteTheMood Api</h1><a href='/api/v1/docs'>Documentation</a>")
-})
+if (!frontendBuildExists) {
+    server.get("/", (req, res) => {
+        res.status(200).send("<h1>NoteTheMood Api</h1><a href='/api/v1/docs'>Documentation</a>")
+    })
+}
 
 server.get("/healthz", (req, res) => {
     res.status(200).json({status: "ok"})
