@@ -1,8 +1,18 @@
-const API_BASE = process.env.REACT_APP_API_URL || "/api/v1";
+function getApiBase() {
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/api/v1`;
+  }
+
+  return "http://localhost:3000/api/v1";
+}
 
 async function request(path, options = {}) {
   const { method = "GET", token, body, query } = options;
-  const url = new URL(`${API_BASE}${path}`);
+  const url = new URL(path, getApiBase());
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
