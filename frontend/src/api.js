@@ -1,4 +1,4 @@
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:3000/api/v1";
+const API_BASE = process.env.REACT_APP_API_URL || "/api/v1";
 
 async function request(path, options = {}) {
   const { method = "GET", token, body, query } = options;
