@@ -4,15 +4,21 @@ function getApiBase() {
   }
 
   if (typeof window !== "undefined") {
-    return `${window.location.origin}/api/v1`;
+    return `${window.location.origin}/api/v1/`;
   }
 
-  return "http://localhost:3000/api/v1";
+  return "http://localhost:3000/api/v1/";
+}
+
+function joinApiUrl(base, path) {
+  const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+  const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+  return new URL(normalizedPath, normalizedBase);
 }
 
 async function request(path, options = {}) {
   const { method = "GET", token, body, query } = options;
-  const url = new URL(path, getApiBase());
+  const url = joinApiUrl(getApiBase(), path);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
