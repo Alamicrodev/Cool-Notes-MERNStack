@@ -1,0 +1,5 @@
+.note-card-main:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.45);
+  outline-offset: 3px;
+  border-radius: 14px;
+}
