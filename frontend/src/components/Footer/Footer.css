@@ -1,0 +1,24 @@
+.app-footer {
+  width: min(100%, 1440px);
+  margin: 14px auto 0;
+  padding: 12px 2px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: transparent;
+}
+
+.app-footer p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.78rem;
+}
+
+.app-footer a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}

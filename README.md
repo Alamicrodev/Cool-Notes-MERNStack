@@ -1,6 +1,15 @@
-# NoteTheMood
+# NoteTheMood [Vist Here](https://notethemood-mernstack.onrender.com/)
 
-NoteTheMood is a MERN note-taking app with a feed-style UI, authentication, public note browsing, private notes, and a compact editor experience inspired by modern shadcn-style interfaces.
+
+<img src="./fontend/public/notethemoodgif.gif" width="100%" /> <br>
+
+NoteTheMood is a MERN social note-taking app with a feed-style UI, authentication, public note browsing, keeping your private notes, and a compact editor experience inspired by modern minimalist-style interfaces. It is hosted online on render [here](https://notethemood-mernstack.onrender.com/)
+
+## Purpose: 
+
+The purpose was to build a full-stack MERN app with various commonly used functionalities like authentication, crud operations, filteration system and more with a clear folder structure. The code comes with extremely clear in-depth comments and is modularized making it easy to understand and various elements and modules can be reused for other MERN projects. 
+
+
 
 ## Features
 
@@ -18,7 +27,7 @@ NoteTheMood is a MERN note-taking app with a feed-style UI, authentication, publ
 - Backend: Node.js, Express
 - Database: MongoDB, Mongoose
 - Auth: JSON Web Tokens
-- Styling: Custom CSS with shadcn-inspired visual patterns
+- Styling: Custom CSS with minimalist and clean visual patterns
 
 ## Project Structure
 
@@ -146,13 +155,3 @@ cd backend && npm start
 ### MongoDB Atlas
 
 If you deploy with Atlas, make sure the cluster allows connections from Render. During testing, the simplest option is to allow `0.0.0.0/0` in Atlas Network Access, then tighten it later if needed.
-
-## Notes
-
-- The frontend is a real app shell now, not the default CRA starter.
-- The backend serves the production React build automatically when `frontend/build` exists.
-- The note bulk-delete route exists on the backend, but the controller is still a placeholder.
-
-## License
-
-No license has been specified yet.

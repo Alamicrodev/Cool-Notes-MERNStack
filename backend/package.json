@@ -14,7 +14,7 @@
     "xss-clean": "^0.1.1",
     "yamljs": "^0.3.0"
   },
-  "name": "coolnotes",
+  "name": "NoteTheMood",
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {

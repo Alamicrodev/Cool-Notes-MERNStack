@@ -1,1 +1,59 @@
-/* The notes dashboard uses the shared app shell styles from App.css. */
+.notes-grid {
+  min-height: calc(100vh - 120px);
+}
+
+.notes-rail {
+  min-width: 0;
+}
+
+.notes-rail-left {
+  display: grid;
+  align-content: start;
+}
+
+.notes-center {
+  padding-top: 8px;
+}
+
+.composer-stage {
+  min-height: 280px;
+}
+
+.composer-prompt-kicker {
+  font-size: 0.72rem;
+}
+
+.composer-prompt-copy {
+  max-width: 18ch;
+}
+
+.composer-form-entry h2 {
+  word-break: break-word;
+}
+
+.rail-section + .rail-section {
+  padding-top: 4px;
+}
+
+.rail-metrics {
+  gap: 12px;
+}
+
+.rail-metrics div {
+  display: grid;
+  gap: 4px;
+}
+
+.notes-feed {
+  padding-top: 6px;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+@media (max-width: 1120px) {
+  .notes-grid {
+    gap: 14px;
+  }
+}

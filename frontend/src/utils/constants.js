@@ -1,3 +1,5 @@
+//these are simply the contant values you might require again and again in the project. 
+
 export const NOTE_MOODS = [
   "stressed",
   "fear",

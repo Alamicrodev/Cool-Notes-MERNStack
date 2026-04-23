@@ -1,6 +1,8 @@
 import Button from "../Button/Button";
 import "./Modal.css";
 
+//most code here is simple to understand so little to no comments
+
 export default function Modal({
   open,
   title,
@@ -16,14 +18,18 @@ export default function Modal({
   }
 
   return (
+    // Overalay covers/dims all the other content 
+    // by clicking it you essentially trigger closing the model.
     <div className="modal-overlay" role="presentation" onClick={onClose}>
       <div
         className="modal-panel surface"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}  //stop propagation: any click on me should not be considered click on overlay.  
+                                                      //otherwise it will close the modal. 
       >
+
         <div className="modal-header">
           <div>
             {title ? <h3 id="modal-title">{title}</h3> : null}
@@ -31,7 +37,7 @@ export default function Modal({
           </div>
 
           <button type="button" className="modal-close" onClick={onClose} aria-label="Close dialog">
-            ×
+            x
           </button>
         </div>
 

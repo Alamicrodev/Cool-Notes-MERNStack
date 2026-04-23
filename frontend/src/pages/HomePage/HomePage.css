@@ -1,1 +1,12 @@
-/* The auth page mostly uses the shared app shell styles. */
+.auth-frame {
+  width: min(100%, 440px);
+  margin: 0 auto;
+}
+
+.auth-segmented {
+  margin-bottom: 14px;
+}
+
+.auth-form {
+  gap: 12px;
+}

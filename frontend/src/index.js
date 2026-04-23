@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* Router lives here so every page component can use route helpers safely. */}
+    {/* Wrapping the entire app in Browser Router, so it can provide all the router context to all children*/}
     <BrowserRouter>
       <App />
     </BrowserRouter>

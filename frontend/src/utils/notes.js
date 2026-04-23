@@ -22,6 +22,10 @@ export function excerpt(value, length = 140) {
   return value.length > length ? `${value.slice(0, length).trim()}...` : value;
 }
 
+
+//builds filter query for api request
+//include visibility: simple flag to check whether to include public/private notes filter. 
+//(because it may not be needed if looking at public feed)
 export function buildNoteQuery(filters, includeVisibility = false) {
   const query = {};
 

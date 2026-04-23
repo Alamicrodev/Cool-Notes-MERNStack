@@ -1,9 +1,11 @@
 export function readJson(key, fallback = null) {
-  if (typeof window === "undefined") {
+  //if its not the running in the browser(Server Side rendering) fall back.  
+  if (typeof window === "undefined") {    
     return fallback;
   }
-
-  try {
+       
+  try {                       
+    //otherwise read from local storage
     const raw = window.localStorage.getItem(key);
     return raw ? JSON.parse(raw) : fallback;
   } catch (error) {
@@ -11,11 +13,14 @@ export function readJson(key, fallback = null) {
   }
 }
 
+
+
 export function writeJson(key, value) {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined") {        
     return;
   }
 
+  //write to the local storage
   if (value === null || value === undefined) {
     window.localStorage.removeItem(key);
     return;
