@@ -1,7 +1,7 @@
 # NoteTheMood [Vist Here](https://notethemood-mernstack.onrender.com/)
 
 
-<img src="./fontend/public/notethemoodgif.gif" width="100%" /> <br>
+<img src="./frontend/public/notethemoodgif.gif" width="100%" /> <br>
 
 NoteTheMood is a MERN social note-taking app with a feed-style UI, authentication, public note browsing, keeping your private notes, and a compact editor experience inspired by modern minimalist-style interfaces. It is hosted online on render [here](https://notethemood-mernstack.onrender.com/)
 
